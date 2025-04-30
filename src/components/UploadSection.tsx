@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { Camera, Upload, Gallery } from 'lucide-react';
+import { Camera, Upload, Image } from 'lucide-react';
 
 const UploadSection = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -122,7 +122,7 @@ const UploadSection = () => {
                   />
                 </Button>
                 <Button variant="outline" className="flex items-center gap-2 bg-white">
-                  <Gallery size={16} />
+                  <Image size={16} />
                   <span>Gallery</span>
                 </Button>
               </div>
