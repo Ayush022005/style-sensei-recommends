@@ -9,6 +9,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from '@/components/ui/separator';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ColorPaletteProps {
   colorRecommendation: ColorRecommendation;
@@ -97,6 +104,42 @@ const ColorPalette = ({ colorRecommendation }: ColorPaletteProps) => {
               ))}
             </div>
           </div>
+          
+          {colorRecommendation.outfitExamples && colorRecommendation.outfitExamples.length > 0 && (
+            <>
+              <Separator />
+              
+              <div>
+                <h4 className="font-medium mb-3">Outfit Color Combinations</h4>
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {colorRecommendation.outfitExamples.map((example, index) => (
+                      <CarouselItem key={index} className="basis-full md:basis-1/2 lg:basis-1/3">
+                        <div className="p-1">
+                          <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+                            <div className="aspect-[4/3] w-full relative">
+                              <img 
+                                src={example.imageUrl} 
+                                alt={`Color combination example ${index + 1}`} 
+                                className="object-cover w-full h-full"
+                              />
+                            </div>
+                            <div className="p-3 text-xs text-center">
+                              {example.description}
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute inset-0 flex items-center justify-between p-1 z-10 pointer-events-none">
+                    <CarouselPrevious className="pointer-events-auto h-7 w-7 opacity-70 hover:opacity-100 bg-black/30 text-white shadow-sm ml-1" />
+                    <CarouselNext className="pointer-events-auto h-7 w-7 opacity-70 hover:opacity-100 bg-black/30 text-white shadow-sm mr-1" />
+                  </div>
+                </Carousel>
+              </div>
+            </>
+          )}
         </div>
       </CardContent>
     </Card>

@@ -4,13 +4,15 @@ export interface ColorRecommendation {
   avoidColors: string[];
   neutrals: string[];
   seasonalPalette: "spring" | "summer" | "autumn" | "winter";
+  outfitExamples?: { imageUrl: string; description: string }[];
 }
 
 export interface OutfitRecommendation {
   style: string;
   description: string;
   imageUrl?: string;
-  imageUrls?: string[]; // Added array of multiple images
+  imageUrls?: string[]; // Multiple images
+  gender: "male" | "female" | "unisex";
 }
 
 export interface JewelryRecommendation {
@@ -39,4 +41,5 @@ export interface StyleProfile {
   outfitRecommendations: OutfitRecommendation[];
   jewelryRecommendations: JewelryRecommendation;
   fabricRecommendations: FabricRecommendation;
+  gender: "male" | "female" | "other";
 }
