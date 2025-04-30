@@ -10,6 +10,7 @@ export interface OutfitRecommendation {
   style: string;
   description: string;
   imageUrl?: string;
+  imageUrls?: string[]; // Added array of multiple images
 }
 
 export interface JewelryRecommendation {
